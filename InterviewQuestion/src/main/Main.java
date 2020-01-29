@@ -28,24 +28,43 @@ import sun.security.util.Length;
 //
 
 public class Main {
+	public static int[] coins = new int[] { 1, 2,5,10};
+
 	public static void main(String args[]) {
 
-		int[] test = new int[] { 1, 2, 3, 4, 4, 5, 5 };
-		System.out.println(AnagramCheck.areAnagrams("Mary", "Myar"));
-		System.out.println(FirstNonRepeatedCharacterSetAndList.findTheFirstNonRepeatingLetterUsingMap("fffffadi"));
-		StringReverseExample.reverseString("Sony is going to introduce Internet TV soon");
-		RegularExpressionExample.checkIfStringContainingIntegers();
-		VowelCounter.countNumberOfVowelsInAString("fadi dasus");
-		Permutation.permutation("ABC");
-		System.out.println(TextReverse.reverseSentence("I am a Java developer"));
-		RandomStuff.sum(test, 8);
+//		int[] test = new int[] { 1, 2, 3, 4, 4, 5, 5 };
+//		System.out.println(AnagramCheck.areAnagrams("Mary", "Myar"));
+//		System.out.println(FirstNonRepeatedCharacterSetAndList.findTheFirstNonRepeatingLetterUsingMap("fffffadi"));
+//		StringReverseExample.reverseString("Sony is going to introduce Internet TV soon");
+//		RegularExpressionExample.checkIfStringContainingIntegers();
+//		VowelCounter.countNumberOfVowelsInAString("fadi dasus");
+//		Permutation.permutation("ABC");
+//		System.out.println(TextReverse.reverseSentence("I am a Java developer"));
+//		RandomStuff.sum(test, 8);
+//		System.out.println("Array with Duplicates       : " + Arrays.toString(test));
+//		System.out.println("After removing duplicates   : " + Arrays.toString(RandomStuff.removeDuplicates(test)));
+//		Pattern pattern = Pattern.compile(",");
+//		Collection<String> numbers = Arrays.asList("1235,1455", "656651", "4444,444,44,44,");
+//		List<String> valids = numbers.stream().filter(pattern.asPredicate()).collect(Collectors.toList());
+//		valids.forEach(System.out::println);
 
-		System.out.println("Array with Duplicates       : " + Arrays.toString(test));
-		System.out.println("After removing duplicates   : " + Arrays.toString(RandomStuff.removeDuplicates(test)));
-		Pattern pattern = Pattern.compile(",");
-		Collection<String> numbers = Arrays.asList("1235,1455", "656651", "4444,444,44,44,");
-		List<String> valids = numbers.stream().filter(pattern.asPredicate()).collect(Collectors.toList());
-		valids.forEach(System.out::println);
+		int amount = 15;
+		int combination = combo(amount,0);
+		System.out.println(combination);
+
+	}
+
+	private static int combo(int amount,int currentCoint) {
+		if (amount == 0)
+			return 1;	
+		if(amount <0)
+			return 0;
+		int combo = 0;
+		for (int coin = currentCoint; coin < coins.length; coin++) {
+			combo += combo(amount-coins[coin],coin); 
+	
+		}
+		return combo;
 
 	}
 
